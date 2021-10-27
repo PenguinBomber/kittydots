@@ -15,6 +15,8 @@ install () {
 		echo ./$file \> '~/'.$file
 		cp $file ~/.$file
 	done
+	echo "Installing Fonts"
+	cp -r ./fonts ~/.fonts
 }
 
 backup () {
