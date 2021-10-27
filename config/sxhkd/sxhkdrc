@@ -1,0 +1,17 @@
+control + alt + t
+	st
+alt + q
+	bspc node -c
+alt + shift + q
+	bspc quit
+alt + control + {Right,Left}
+	bspc desktop -f {next,prev}
+alt + control + shift + {Right,Left}
+	bspc node -d {next,prev} --follow
+alt + control + s
+	bspc node -s pointed --follow
+alt + {button4,button5}
+	bspc node @parent -r {+0.03,-0.03}
+alt + space
+	rofi -show run
+	#dmenu_run -b -nb "#f68f8f" -nf "#fff" -sb "#f7a1a1" -sf "#fff" -p "Open:" &
