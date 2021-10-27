@@ -1,7 +1,7 @@
 # kittydots
 Dotfiles for my Kitty DE
 
-Run install.ch, some basic configuration is needed for polybar and bspwm relating to hardware post install.
+Run install.sh, some basic configuration is needed for polybar and bspwm relating to hardware post install, so it might not work right out of the box.
 
 Screenshots
 ![Demo](https://user-images.githubusercontent.com/50743515/138957114-a7e7bc89-e5c3-4db3-8a5d-795037467f50.png)
