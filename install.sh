@@ -1,6 +1,5 @@
 #!/bin/bash
-if [ $# -lt 1 ]
-then
+help () {
 	echo "KittyDot Installer Usage: ./install.sh <operation> (option)"
 	echo ""
 	echo "Operations"
@@ -8,34 +7,47 @@ then
 	echo " backup  : Copys the current configs to (Config File).backup for safe keeping"
 	echo " restore : Restores the config files named (Config File).backup that the installer backed up"
 	EXIT=1
-fi
+}
 
-if [ $1 = install ]
-then
-	echo "Installing the KittyDot Configs..."
+install () {
 	for file in $(find config -not -type d)
 	do
-		echo $file
+		echo ./$file \> '~/'.$file
 		cp $file ~/.$file
 	done
-fi
+}
 
-if [ $1 = backup ]
-then
-	echo "Backing up configs..."
+backup () {
 	for file in $(find config -not -type d)
 	do
-		echo $file
+		echo '~/'.$file \> '~/'.$file.backup
 		cp ~/.$file ~/.$file.backup
 	done
-fi
+}
 
-if [ $1 = restore ]
-then
-	echo "Backing up configs..."
+restore () {
 	for file in $(find config -not -type d)
 	do
-		echo $file
+		echo '~/'.$file.backup \> '~/'.$file
 		cp ~/.$file.backup ~/.$file
 	done
+}
+
+if [ $# -lt 1 ]
+then
+	help
+elif [ $1 = 'install' ]
+then
+	echo "Installing the KittyDot Configs..."
+	install
+elif [ $1 = 'backup' ]
+then
+	echo "Backing up configs..."
+	backup
+elif [ $1 = 'restore' ]
+then
+	echo "Restoring configs..."
+	restore
+else
+	help
 fi
