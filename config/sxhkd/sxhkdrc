@@ -17,3 +17,5 @@ alt + space
 	#dmenu_run -b -nb "#f68f8f" -nf "#fff" -sb "#f7a1a1" -sf "#fff" -p "Open:" &
 alt + control + r
 	bspc node @parent -R 90
+alt + control + {1,2,3,4}
+	bspc desktop -f {1,2,3,4}
