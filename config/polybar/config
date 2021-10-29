@@ -7,6 +7,7 @@ bar = #00000000
 bg-dark = #f47c7c
 bg = #F68F8F
 bg-light = #F7A1A1 
+
 [bar/main]
 
 width = 100%:-40
@@ -23,6 +24,23 @@ modules-left = start workspaces
 modules-right = alsa brightness battery date
 
 radius = 5
+
+font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
+
+
+[bar/productive]
+
+width = 100%
+height = 30
+
+bottom=true
+
+background = ${color.bg}
+
+modules-left = start workspaces
+modules-right = alsa brightness battery date
+
+radius = 0
 
 font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
 
