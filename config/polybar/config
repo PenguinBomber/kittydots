@@ -21,7 +21,7 @@ bottom=true
 background = ${color.bg}
 
 modules-left = start workspaces
-modules-right = alsa brightness battery date
+modules-right = alsa brightness battery productive_mode date
 
 radius = 5
 
@@ -38,7 +38,10 @@ bottom=true
 background = ${color.bg}
 
 modules-left = start workspaces
-modules-right = alsa brightness battery date
+modules-right = alsa brightness battery style_mode date
+
+border-top-color = ${color.bg-light}
+border-top-size = 3
 
 radius = 0
 
@@ -55,6 +58,22 @@ format-background = ${color.bg-dark}
 format-padding = 2
 
 label = %time%
+
+[module/productive_mode]
+type = custom/text
+content = 
+content-background = ${color.bg}
+content-padding = 1
+
+click-left = killall polybar; bspc config bottom_padding 0; bspc config window_gap 0 ; polybar productive
+
+[module/style_mode]
+type = custom/text
+content = 
+content-background = ${color.bg}
+content-padding = 1
+
+click-left = killall polybar; bspc config bottom_padding 0; bspc config window_gap 20 ; polybar main
 
 [module/brightness]
 type = custom/script
