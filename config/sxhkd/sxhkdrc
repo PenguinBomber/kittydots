@@ -1,5 +1,7 @@
 control + alt + t
 	st
+control + alt + f
+	bspc node --state \~fullscreen
 alt + q
 	bspc node -c
 alt + shift + q
