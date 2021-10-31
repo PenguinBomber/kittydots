@@ -5,6 +5,7 @@ pgrep -x sxhkd > /dev/null || sxhkd &
 feh --bg-fill ~/.config/wallpaper &
 polybar main &
 picom --experimental-backends &
+monman &
 
 #Replace eDP-1 with the name of your main display
 bspc monitor eDP-1 -d "1" "2" "3" "4"
