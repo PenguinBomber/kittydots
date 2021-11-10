@@ -5,7 +5,7 @@ control + alt + f
 alt + q
 	bspc node -c
 alt + shift + q
-	bspc quit
+	rofi -modi "logout:logoutmenu" -show ~/.config/rofi/powermenu.sh
 alt + control + {Right,Left}
 	bspc desktop -f {next,prev}
 alt + control + shift + {Right,Left}
