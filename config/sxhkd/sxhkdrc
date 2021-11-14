@@ -5,7 +5,7 @@ control + alt + f
 alt + q
 	bspc node -c
 alt + shift + q
-	rofi -modi "logout:logoutmenu" -show ~/.config/rofi/powermenu.sh
+	rofi -modi "power:~/.config/rofi/powermenu.sh" -show power
 alt + control + {Right,Left}
 	bspc desktop -f {next,prev}
 alt + control + shift + {Right,Left}
@@ -15,7 +15,7 @@ alt + control + s
 alt + {button4,button5}
 	bspc node @parent -r {+0.03,-0.03}
 alt + space
-	rofi -show run
+	rofi -modi "run" -show run
 	#dmenu_run -b -nb "#f68f8f" -nf "#fff" -sb "#f7a1a1" -sf "#fff" -p "Open:" &
 alt + control + r
 	bspc node @parent -R 90
