@@ -51,7 +51,7 @@ font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
 type = internal/date
 interval = 1.0
 
-time = %I:%M %p
+time = %a, %b %d | %I:%M %p
 
 format = <label>
 format-background = ${color.bg-dark}
