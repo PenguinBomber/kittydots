@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Flat-Remix-GTK-pink-Light
+Comment=Flat-Remix-GTK-pink-Light theme"
+Encoding=UTF-8
+
+
+[X-GNOME-Metatheme]
+GtkTheme=Flat-Remix-GTK-pink-Light
+MetacityTheme=Flat-Remix-Light-Metacity
+IconTheme=Flat-Remix-pink-Light
+CursorTheme=Adwaita
+ButtonLayout=:minimize,maximize,close
