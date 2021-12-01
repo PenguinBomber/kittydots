@@ -1,12 +1,32 @@
 ;; Base Config
 ;; Bryce Schuman
 
+;#################################
+;#              __               #
+;#  _________  / /___  __________#
+;# / ___/ __ \/ / __ \/ ___/ ___/#
+;#/ /__/ /_/ / / /_/ / /  (__  ) #
+;#\___/\____/_/\____/_/  /____/  #
+;#################################
+
 [color]
 
 bar = #00000000
 bg-dark = #f47c7c
 bg = #F68F8F
 bg-light = #F7A1A1 
+
+;###########################
+;#    __                   #
+;#   / /_  ____ ___________#
+;#  / __ \/ __ `/ ___/ ___/#
+;# / /_/ / /_/ / /  (__  ) #
+;#/_.___/\__,_/_/  /____/  #
+;###########################
+
+;----------------------
+;Main Bar
+;----------------------
 
 [bar/main]
 
@@ -27,38 +47,59 @@ radius = 5
 
 font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
 
+;----------------------
+;Productive Bar
+;----------------------
 
 [bar/productive]
-
+inherit = bar/main
 width = 100%
-height = 30
 
 bottom=true
 
-background = ${color.bg}
-
-modules-left = start workspaces
 modules-right = alsa brightness battery style_mode date
 
 border-top-color = ${color.bg-light}
 border-top-size = 3
 
-radius = 0
+;##############################################
+;#                        __      __          #
+;#   ____ ___  ____  ____/ /_  __/ /__  _____ #
+;#  / __ `__ \/ __ \/ __  / / / / / _ \/ ___/ #
+;# / / / / / / /_/ / /_/ / /_/ / /  __(__  )  #
+;#/_/ /_/ /_/\____/\__,_/\__,_/_/\___/____/   #
+;##############################################
 
-font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
+;----------------------
+;Left Side Modules
+;----------------------
+[module/start]
+type = custom/text
+content = 
+content-background = ${color.bg-dark}
+content-padding = 2
 
-[module/date]
-type = internal/date
-interval = 1.0
+[module/workspaces]
+type = internal/xworkspaces
 
-time = %a, %b %d | %I:%M %p
+format = <label-state>
+format-padding = 0
 
-format = <label>
-format-background = ${color.bg-dark}
-format-padding = 2
+label-active-background = ${color.bg-light}
+label-empty-background  = ${color.bg-dark}
+label-occupied-background = ${color.bg-dark}
 
-label = %time%
+label-active-padding = 1
+label-empty-padding = 1
+label-occupied-padding = 1
 
+label-active-padding-left = 0.5
+label-empty-padding-left = 0.5
+label-occupied-padding-left = 0.5
+
+;----------------------
+;Mode Switching Modules
+;----------------------
 [module/productive_mode]
 type = custom/text
 content = 
@@ -75,6 +116,24 @@ content-padding = 1
 
 click-left = killall polybar; bspc config bottom_padding 0; bspc config window_gap 20 ; polybar main
 
+;----------------------
+;Time Module
+;----------------------
+[module/date]
+type = internal/date
+interval = 1.0
+
+time = %a, %b %d | %I:%M %p
+
+format = <label>
+format-background = ${color.bg-dark}
+format-padding = 2
+
+label = %time%
+
+;----------------------
+;Status Modules
+;----------------------
 [module/brightness]
 type = custom/script
 exec = echo  `blight -d amdgpu_bl0 get`''
@@ -85,13 +144,8 @@ content-padding = 2
 scroll-up = blight -d amdgpu_bl0 set +20
 scroll-down = blight -d amdgpu_bl0 set -20
 
-[module/start]
-type = custom/text
-content = 
-content-background = ${color.bg-dark}
-content-padding = 2
-
 click-left = rofi -show run
+
 [module/alsa]
 type = internal/alsa
 format-volume = <label-volume>
@@ -126,24 +180,6 @@ label-discharging-padding = 1
 
 format-charging-background = ${color.bg}
 format-discharging-background = ${color.bg}
-
-[module/workspaces]
-type = internal/xworkspaces
-
-format = <label-state>
-format-padding = 0
-
-label-active-background = ${color.bg-light}
-label-empty-background  = ${color.bg-dark}
-label-occupied-background = ${color.bg-dark}
-
-label-active-padding = 1
-label-empty-padding = 1
-label-occupied-padding = 1
-
-label-active-padding-left = 0.5
-label-empty-padding-left = 0.5
-label-occupied-padding-left = 0.5
 
 [settings]
 pseudo-transparency = true
