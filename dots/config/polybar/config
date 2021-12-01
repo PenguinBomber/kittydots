@@ -55,12 +55,17 @@ font-0 = "Literation Mono Nerd Font:pixelsize=10;2"
 inherit = bar/main
 width = 100%
 
+offset-x = 0
+offset-y = 0
+
 bottom=true
 
 modules-right = alsa brightness battery style_mode date
 
 border-top-color = ${color.bg-light}
 border-top-size = 3
+
+radius = 0
 
 ;##############################################
 ;#                        __      __          #
