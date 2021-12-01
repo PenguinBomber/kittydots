@@ -25,22 +25,22 @@ systemInstall() {
 	if [ -d ./dots/system/etc ]
 	then
 		echo "Installing system configs"
-		cp -r ./dots/system/etc /etc
+		cp --backup -r ./dots/system/etc/* /etc
 	fi
 	if [ -d ./dots/system/fonts ]
 	then
 		echo "Installing system fonts"
-		cp -r ./dots/system/fonts /usr/share/fonts
+		cp --backup -r ./dots/system/fonts/* /usr/share/fonts
 	fi
 	if [ -d ./dots/system/themes ]
 	then
 		echo "Installing system themes"
-		cp -r ./dots/system/themes /usr/share/themes
+		cp --backup -r ./dots/system/themes/* /usr/share/themes
 	fi
 	if [ -d ./dots/system/icons ]
 	then
 		echo "Installing system icons"
-		cp -r ./dots/system/icons /usr/share/icons
+		cp --backup -r ./dots/system/icons/* /usr/share/icons
 	fi
 }
 
@@ -50,22 +50,22 @@ install () {
 	if [ -d ./dots/config ]
 	then
 		echo "Installing user configs"
-		cp -r ./dots/config ~/.config
+		cp --backup -r ./dots/config/* ~/.config
 	fi
 	if [ -d ./dots/fonts ]
 	then
 		echo "Installing user fonts"
-		cp -r ./dots/fonts ~/.fonts
+		cp --backup -r ./dots/fonts/* ~/.fonts
 	fi
 	if [ -d ./dots/themes ]
 	then
 		echo "Installing user themes"
-		cp -r ./dots/themes ~/.themes
+		cp --backup -r ./dots/themes/* ~/.themes
 	fi
 	if [ -d ./dots/icons ]
 	then
 		echo "Installing user icons"
-		cp -r ./dots/icons ~/.icons
+		cp --backup -r ./dots/icons/* ~/.icons
 	fi
 
 	#check for system configs
