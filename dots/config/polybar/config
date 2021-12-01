@@ -1,6 +1,10 @@
 ;; Base Config
 ;; Bryce Schuman
 
+;Polybar Settings
+[settings]
+pseudo-transparency = true
+
 ;#################################
 ;#              __               #
 ;#  _________  / /___  __________#
@@ -41,7 +45,7 @@ bottom=true
 background = ${color.bg}
 
 modules-left = start workspaces
-modules-right = alsa brightness battery productive_mode date
+modules-right = capslock wired-network wireless-network alsa brightness battery productive_mode date
 
 radius = 5
 
@@ -60,7 +64,7 @@ offset-y = 0
 
 bottom=true
 
-modules-right = alsa brightness battery style_mode date
+modules-right = capslock wired-network wireless-network alsa brightness battery style_mode date
 
 border-top-color = ${color.bg-light}
 border-top-size = 3
@@ -80,15 +84,16 @@ radius = 0
 ;----------------------
 [module/start]
 type = custom/text
-content = 
+
 content-background = ${color.bg-dark}
 content-padding = 2
 
+content = 
+
+click-left = rofi -show run
+
 [module/workspaces]
 type = internal/xworkspaces
-
-format = <label-state>
-format-padding = 0
 
 label-active-background = ${color.bg-light}
 label-empty-background  = ${color.bg-dark}
@@ -107,17 +112,21 @@ label-occupied-padding-left = 0.5
 ;----------------------
 [module/productive_mode]
 type = custom/text
-content = 
+
 content-background = ${color.bg}
 content-padding = 1
+
+content = 
 
 click-left = killall polybar; bspc config bottom_padding 0; bspc config window_gap 0 ; polybar productive
 
 [module/style_mode]
 type = custom/text
-content = 
+
 content-background = ${color.bg}
 content-padding = 1
+
+content = 
 
 click-left = killall polybar; bspc config bottom_padding 0; bspc config window_gap 20 ; polybar main
 
@@ -128,63 +137,109 @@ click-left = killall polybar; bspc config bottom_padding 0; bspc config window_g
 type = internal/date
 interval = 1.0
 
-time = %a, %b %d | %I:%M %p
-
-format = <label>
 format-background = ${color.bg-dark}
 format-padding = 2
+
+format = <label>
+
+time = %a, %b %d | %I:%M %p
 
 label = %time%
 
 ;----------------------
 ;Status Modules
 ;----------------------
-[module/brightness]
+[module/wired-network]
+type = internal/network
+interval = 3.0
+
+interface = eth0
+
+format-connected-background = ${color.bg}
+format-disconnected-background = ${color.bg}
+format-packetloss-background = ${color.bg}
+
+label-connected-padding = 1
+label-disconnected-padding = 1
+label-packetloss-padding = 1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+format-packetloss = <label-packetloss>
+
+label-connected =  %ifname%
+label-disconnected = ?
+label-packetloss = ! %ifname%
+
+[module/wireless-network]
+inherit = module/wired-network
+
+interface = wlan0
+
+label-connected =  %essid%
+label-disconnected = ?
+label-packetloss = ! %essid%
+
+[module/capslock]
 type = custom/script
-exec = echo  `blight -d amdgpu_bl0 get`''
 interval = 0.1
+
 content-background = ${color.bg-dark}
 content-padding = 2
 
+exec = ~/.config/polybar/capslock.sh
 scroll-up = blight -d amdgpu_bl0 set +20
 scroll-down = blight -d amdgpu_bl0 set -20
 
-click-left = rofi -show run
+[module/brightness]
+type = custom/script
+interval = 0.1
+
+content-background = ${color.bg-dark}
+content-padding = 1
+
+exec = ~/.config/polybar/brightness.sh
+scroll-up = blight -d amdgpu_bl0 set +20
+scroll-down = blight -d amdgpu_bl0 set -20
 
 [module/alsa]
 type = internal/alsa
-format-volume = <label-volume>
-format-muted = <label-muted>
+
+master-mixer = PCM
 
 format-volume-background = ${color.bg}
 format-muted-background = ${color.bg}
 
-label-volume = 墳 %percentage%%
-label-muted = 婢 Muted
-
 label-volume-padding = 1
 label-muted-padding = 1
 
+format-volume =<label-volume>
+format-muted =<label-muted>
+
+label-volume =墳 %percentage%%
+label-muted =婢 Muted
+
 [module/battery]
 type = internal/battery
-
-format-charging = <label-charging>
+poll-interval = 1
 
 full-at = 100
 battery = BAT1
 adapter = ADP1
-poll-interval = 1
 
-label-full =  100%
-label-charging =  %percentage%%
-label-discharging =  %percentage%%
+format-full-background = ${color.bg}
+format-charging-background = ${color.bg}
+format-discharging-background = ${color.bg}
 
 label-full-padding = 1
 label-charging-padding = 1
 label-discharging-padding = 1
 
-format-charging-background = ${color.bg}
-format-discharging-background = ${color.bg}
+format-full = <label-full>
+format-charging = <label-charging>
+format-discharging = <label-discharging>
 
-[settings]
-pseudo-transparency = true
+label-full =  100%
+label-charging =  %percentage%%
+label-discharging =  %percentage%%
+
