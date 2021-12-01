@@ -168,8 +168,8 @@ format-disconnected = <label-disconnected>
 format-packetloss = <label-packetloss>
 
 label-connected =  %ifname%
-label-disconnected = ?
-label-packetloss = ! %ifname%
+label-disconnected =  ? %ifname%
+label-packetloss =  ! %ifname%
 
 [module/wireless-network]
 inherit = module/wired-network
