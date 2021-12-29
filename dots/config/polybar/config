@@ -167,18 +167,18 @@ format-connected = <label-connected>
 format-disconnected = <label-disconnected>
 format-packetloss = <label-packetloss>
 
-label-connected =  %ifname%
-label-disconnected =  ? %ifname%
-label-packetloss =  ! %ifname%
+label-connected =  %ifname%
+label-disconnected =  %ifname%
+label-packetloss = ! %ifname%
 
 [module/wireless-network]
 inherit = module/wired-network
 
 interface = wlan0
 
-label-connected =  %essid%
-label-disconnected = ?
-label-packetloss = ! %essid%
+label-connected = 直 %essid%
+label-disconnected = 睊
+label-packetloss = 直! %essid%
 
 [module/capslock]
 type = custom/script
@@ -205,7 +205,6 @@ scroll-down = blight -d amdgpu_bl0 set -20
 [module/alsa]
 type = internal/alsa
 
-master-mixer = PCM
 
 format-volume-background = ${color.bg}
 format-muted-background = ${color.bg}
