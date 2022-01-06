@@ -6,6 +6,9 @@ killall polybar; polybar main &
 killall picom; picom --experimental-backends &
 killall monman; monman &
 
+#Enable Tap To Click for the Acer Aspire 5's Trackpad
+xinput set-prop 15 315 1
+
 #Set Desktop Wallpaper
 feh --bg-fill ~/.config/wallpaper &
 
